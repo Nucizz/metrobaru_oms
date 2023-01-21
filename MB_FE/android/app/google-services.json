@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "619429553379",
+    "project_id": "rm-metro-baru",
+    "storage_bucket": "rm-metro-baru.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619429553379:android:d451eaf082e55f66bf91d6",
+        "android_client_info": {
+          "package_name": "com.example.fe_lec_finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619429553379-49i161794626ho3p007clp70q9d9pin4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBndi53Vy1TRjWeZMacxwY7fpcPZVF-Rps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619429553379-49i161794626ho3p007clp70q9d9pin4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
