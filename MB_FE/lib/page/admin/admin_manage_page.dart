@@ -130,7 +130,6 @@ class _ADMManagePageState extends State<ADMManagePage> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(left: 15, right: 15),
             width: double.infinity,
             height: SizeConfig.heightByPercent(82) - 90,
             decoration: const BoxDecoration(
@@ -140,154 +139,157 @@ class _ADMManagePageState extends State<ADMManagePage> {
                   topRight: Radius.circular(25),
                 )),
             child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.only(top: 15),
-                    padding: const EdgeInsets.all(10),
-                    child: ListView(
-                      shrinkWrap: true,
-                      padding: EdgeInsets.zero,
-                      physics: const NeverScrollableScrollPhysics(),
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 2),
-                          child: Text(
-                            "Account",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Palette.black,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      margin: const EdgeInsets.only(top: 15),
+                      padding: const EdgeInsets.all(10),
+                      child: ListView(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 2),
+                            child: Text(
+                              "Account",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Palette.black,
+                              ),
                             ),
                           ),
-                        ),
-                        CUIManageList(
-                          function: () {},
-                          icon: Icons.person,
-                          title: "Edit Profile",
-                          hint: "Change your personal informations",
-                          warning: false,
-                        ),
-                        const Divider(
-                          thickness: 1,
-                        ),
-                        CUIManageList(
-                          function: () {},
-                          icon: Icons.lock_rounded,
-                          title: "Security settings",
-                          hint: "Change your account security details",
-                          warning: false,
-                        ),
-                        const Divider(
-                          thickness: 1,
-                        ),
-                        CUIManageList(
-                          function: () {},
-                          icon: Icons.logout_rounded,
-                          title: "Logout",
-                          hint: "Logout from your account",
-                          warning: true,
-                        ),
-                      ],
+                          CUIManageList(
+                            function: () {},
+                            icon: Icons.person,
+                            title: "Edit Profile",
+                            hint: "Change your personal informations",
+                            warning: false,
+                          ),
+                          const Divider(
+                            thickness: 1,
+                          ),
+                          CUIManageList(
+                            function: () {},
+                            icon: Icons.lock_rounded,
+                            title: "Security settings",
+                            hint: "Change your account security details",
+                            warning: false,
+                          ),
+                          const Divider(
+                            thickness: 1,
+                          ),
+                          CUIManageList(
+                            function: () {},
+                            icon: Icons.logout_rounded,
+                            title: "Logout",
+                            hint: "Logout from your account",
+                            warning: true,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 5),
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(10),
-                    child: ListView(
-                      shrinkWrap: true,
-                      padding: EdgeInsets.zero,
-                      physics: const NeverScrollableScrollPhysics(),
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 2),
-                          child: Text(
-                            "Restaurant",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Palette.black,
+                    Container(
+                      margin: const EdgeInsets.only(top: 5),
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(10),
+                      child: ListView(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 2),
+                            child: Text(
+                              "Restaurant",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Palette.black,
+                              ),
                             ),
                           ),
-                        ),
-                        CUIManageList(
-                          function: () {},
-                          icon: Icons.store_rounded,
-                          title: "Edit restaurant",
-                          hint: "Change your resturant information",
-                          warning: false,
-                        ),
-                        const Divider(
-                          thickness: 1,
-                        ),
-                        CUIManageList(
-                          function: () {},
-                          icon: Icons.people_alt_rounded,
-                          title: "Manage users",
-                          hint: "Manage registered users on the app",
-                          warning: false,
-                        ),
-                        const Divider(
-                          thickness: 1,
-                        ),
-                        CUIManageList(
-                          function: () {},
-                          icon: Icons.miscellaneous_services_rounded,
-                          title: "Manage services",
-                          hint: "Manage in-app services for customers",
-                          warning: false,
-                        ),
-                      ],
+                          CUIManageList(
+                            function: () {},
+                            icon: Icons.store_rounded,
+                            title: "Edit restaurant",
+                            hint: "Change your resturant information",
+                            warning: false,
+                          ),
+                          const Divider(
+                            thickness: 1,
+                          ),
+                          CUIManageList(
+                            function: () {},
+                            icon: Icons.people_alt_rounded,
+                            title: "Manage users",
+                            hint: "Manage registered users on the app",
+                            warning: false,
+                          ),
+                          const Divider(
+                            thickness: 1,
+                          ),
+                          CUIManageList(
+                            function: () {},
+                            icon: Icons.miscellaneous_services_rounded,
+                            title: "Manage services",
+                            hint: "Manage in-app services for customers",
+                            warning: false,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 5),
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(10),
-                    child: ListView(
-                      shrinkWrap: true,
-                      padding: EdgeInsets.zero,
-                      physics: const NeverScrollableScrollPhysics(),
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 2),
-                          child: Text(
-                            "Menu",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Palette.black,
+                    Container(
+                      margin: const EdgeInsets.only(top: 5),
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(10),
+                      child: ListView(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 2),
+                            child: Text(
+                              "Menu",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Palette.black,
+                              ),
                             ),
                           ),
-                        ),
-                        CUIManageList(
-                          function: () {},
-                          icon: Icons.menu_book_rounded,
-                          title: "Manage items",
-                          hint: "Manage menu items information",
-                          warning: false,
-                        ),
-                      ],
+                          CUIManageList(
+                            function: () {},
+                            icon: Icons.menu_book_rounded,
+                            title: "Manage items",
+                            hint: "Manage menu items information",
+                            warning: false,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 5),
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Palette.white,
-                      borderRadius: BorderRadius.circular(15),
+                    Container(
+                      margin: const EdgeInsets.only(top: 5),
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Palette.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const CUIDeveloperInformation(),
                     ),
-                    child: const CUIDeveloperInformation(),
-                  ),
-                  const SizedBox(
-                    height: 80,
-                  ),
-                ],
+                    const SizedBox(
+                      height: 80,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

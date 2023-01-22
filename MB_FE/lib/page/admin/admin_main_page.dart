@@ -106,7 +106,7 @@ class _ADMMainPageState extends State<ADMMainPage> {
       ),
       body: [
         HomePage(user: widget.user),
-        const ADMOrderListPage(),
+        ADMOrderListPage(user: widget.user),
         ADMManagePage(user: widget.user),
       ].elementAt(_selectedIndex),
     );
