@@ -3,7 +3,7 @@ import 'package:fe_lec_finalproject/class/user.dart';
 import 'package:fe_lec_finalproject/cui/cui_form_button.dart';
 import 'package:fe_lec_finalproject/cui/cui_form_field.dart';
 import 'package:fe_lec_finalproject/class/color_palette.dart';
-import 'package:fe_lec_finalproject/page/main_page.dart';
+import 'package:fe_lec_finalproject/page/admin/admin_main_page.dart';
 import 'package:fe_lec_finalproject/page/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -153,7 +153,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                             PageTransition(
                               type: PageTransitionType.rightToLeft,
                               duration: const Duration(milliseconds: 300),
-                              child: MainPage(
+                              child: ADMMainPage(
                                 user: Debug.admin
                               ),
                             ),

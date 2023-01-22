@@ -1,25 +1,26 @@
 import 'package:fe_lec_finalproject/class/color_palette.dart';
 import 'package:fe_lec_finalproject/class/size_config.dart';
 import 'package:fe_lec_finalproject/page/home_page.dart';
-import 'package:fe_lec_finalproject/page/order_page.dart';
-import 'package:fe_lec_finalproject/page/profile_page.dart';
+import 'package:fe_lec_finalproject/page/admin/admin_manage_page.dart';
+import 'package:fe_lec_finalproject/page/admin/admin_order_list_page.dart';
+import 'package:fe_lec_finalproject/page/customer/customer_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-import '../class/item.dart';
-import '../class/user.dart';
+import '../../class/item.dart';
+import '../../class/user.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key, required this.user});
+class ADMMainPage extends StatefulWidget {
+  const ADMMainPage({super.key, required this.user});
   final User user;
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<ADMMainPage> createState() => _ADMMainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _ADMMainPageState extends State<ADMMainPage> {
   int _selectedIndex = 0;
 
   @override
@@ -35,9 +36,9 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         title: Image.asset(
-          _selectedIndex == 0
-              ? "assets/images/logo-text-white.png"
-              : "assets/images/logo-text.png",
+          _selectedIndex == 1
+              ? "assets/images/logo-text.png"
+              : "assets/images/logo-text-white.png",
           height: 50,
         ),
       ),
@@ -90,13 +91,13 @@ class _MainPageState extends State<MainPage> {
                 ),
                 GButton(
                   padding: EdgeInsets.all(5),
-                  icon: Icons.local_dining_rounded,
+                  icon: Icons.soup_kitchen_rounded,
                   text: 'Order',
                 ),
                 GButton(
                   padding: EdgeInsets.all(5),
                   icon: Icons.person_rounded,
-                  text: 'Profile',
+                  text: 'Manage',
                 ),
               ],
             ),
@@ -105,8 +106,8 @@ class _MainPageState extends State<MainPage> {
       ),
       body: [
         HomePage(user: widget.user),
-        const OrderPage(),
-        const ProfilePage(),
+        const ADMOrderListPage(),
+        ADMManagePage(user: widget.user),
       ].elementAt(_selectedIndex),
     );
   }

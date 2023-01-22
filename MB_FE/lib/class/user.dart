@@ -1,20 +1,19 @@
 class User {
   final int id;
+  final int typeId; // 1 , 2
+  final String typeName; // Customer, Admin
   final String username;
   final String emailAddress;
-  final int typeId;
-  final String typeName;
   final String phoneNumber;
-  String? profilePicturePath;
-
   final String accountCreationDate;
+  String? profilePicturePath;
 
   User(
       {required this.id,
-      required this.username,
-      required this.emailAddress,
       required this.typeId,
       required this.typeName,
+      required this.username,
+      required this.emailAddress,
       required this.phoneNumber,
       required this.accountCreationDate,
       this.profilePicturePath});

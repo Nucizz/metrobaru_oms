@@ -3,7 +3,7 @@ import 'package:fe_lec_finalproject/class/user.dart';
 import 'package:fe_lec_finalproject/cui/cui_form_button.dart';
 import 'package:fe_lec_finalproject/cui/cui_form_field.dart';
 import 'package:fe_lec_finalproject/class/color_palette.dart';
-import 'package:fe_lec_finalproject/page/main_page.dart';
+import 'package:fe_lec_finalproject/page/admin/admin_main_page.dart';
 import 'package:fe_lec_finalproject/page/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -13,6 +13,7 @@ import 'package:page_transition/page_transition.dart';
 
 import '../class/feature.dart';
 import '../debug_item_list.dart';
+import 'customer/customer_main_page.dart';
 import 'sign_in_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -170,7 +171,7 @@ class _RegisterPageState extends State<RegisterPage>
                             PageTransition(
                               type: PageTransitionType.rightToLeft,
                               duration: const Duration(milliseconds: 300),
-                              child: MainPage(user: Debug.admin),
+                              child: CUSMainPage(user: Debug.dummyUser[1]),
                             ),
                           );
                         },

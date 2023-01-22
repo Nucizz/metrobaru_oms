@@ -2,23 +2,26 @@ import 'package:fe_lec_finalproject/class/color_palette.dart';
 import 'package:fe_lec_finalproject/class/order_details.dart';
 import 'package:fe_lec_finalproject/class/order_header.dart';
 import 'package:fe_lec_finalproject/cui/cui_order_list_view.dart';
+import 'package:fe_lec_finalproject/page/admin/admin_new_order_page.dart';
+import 'package:fe_lec_finalproject/page/menu_list_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:page_transition/page_transition.dart';
 
-import '../class/item.dart';
-import '../class/size_config.dart';
-import '../debug_item_list.dart';
+import '../../class/item.dart';
+import '../../class/size_config.dart';
+import '../../debug_item_list.dart';
 
-class OrderPage extends StatefulWidget {
-  const OrderPage({super.key});
+class ADMOrderListPage extends StatefulWidget {
+  const ADMOrderListPage({super.key});
 
   @override
-  State<OrderPage> createState() => _OrderPageState();
+  State<ADMOrderListPage> createState() => _ADMOrderListPageState();
 }
 
-class _OrderPageState extends State<OrderPage> {
+class _ADMOrderListPageState extends State<ADMOrderListPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,7 +68,16 @@ class _OrderPageState extends State<OrderPage> {
                       )
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        duration: const Duration(milliseconds: 300),
+                        child: const MenuListPage(),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

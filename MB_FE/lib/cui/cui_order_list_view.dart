@@ -20,99 +20,100 @@ class _CUIOrderListViewState extends State<CUIOrderListView> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
-      child: SizedBox(
-        width: SizeConfig.width! - 15,
-        height: 80,
-        child: Row(
-          children: [
-            ClipRRect(
+      child: TextButton(
+        onPressed: () {},
+        style: ButtonStyle(
+          padding: const MaterialStatePropertyAll(EdgeInsets.all(0)),
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
-              child: OrderHeader.isDineIn(widget.orderInfo.typeId)
-                  ? Image.asset(
-                      "assets/images/UI/table_${widget.orderInfo.tableNumber}.png",
-                      height: 80,
-                      width: 80,
-                      fit: BoxFit.cover,
-                    )
-                  : (widget.orderInfo.customer!.profilePicturePath) != null
-                      ? Image.network(
-                          widget.orderInfo.customer!.profilePicturePath!,
-                          height: 80,
-                          width: 80,
-                          fit: BoxFit.cover,
-                        )
-                      : Image.asset(
-                          "assets/images/UI/default profile picture.png",
-                          height: 80,
-                          width: 80,
-                          fit: BoxFit.cover,
-                        ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Column(
+          ),
+        ),
+        child: Container(
+          width: SizeConfig.width! - 15,
+          height: 80,
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+          decoration: BoxDecoration(
+            color: Palette.light,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "#${widget.orderInfo.index} ${OrderHeader.isDineIn(widget.orderInfo.typeId) ? "Table ${widget.orderInfo.tableNumber}" : widget.orderInfo.customer!.username}",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                    "#${widget.orderInfo.id}-${widget.orderInfo.index}",
+                    style: const TextStyle(
+                      color: Palette.dark,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  OrderHeader.duration(widget.orderInfo.lastUpdatedTS),
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: Icon(
+                      OrderHeader.isDineIn(widget.orderInfo.typeId)
+                          ? Icons.local_dining
+                          : OrderHeader.isDelivery(widget.orderInfo.typeId)
+                              ? Icons.delivery_dining_rounded
+                              : Icons.inbox_rounded,
+                      size: 16,
+                    ),
+                  ),
+                  Text(
+                    OrderHeader.isDineIn(widget.orderInfo.typeId)
+                        ? "Table ${widget.orderInfo.tableNumber}"
+                        : widget.orderInfo.name!,
                     style: const TextStyle(
                       fontSize: 16,
                       color: Palette.black,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Row(
-                    children: [
-                      Icon(
-                        (OrderHeader.isDineIn(widget.orderInfo.typeId)
-                            ? Icons.local_dining_rounded
-                            : OrderHeader.isDelivery(widget.orderInfo.typeId)
-                                ? Icons.delivery_dining_rounded
-                                : Icons.shopping_bag_rounded),
-                        size: 18,
-                        color: Palette.dark,
-                      ),
-                      Text(
-                        " ${widget.orderInfo.typeName}",
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Palette.dark,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
                   Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Palette.getStatusColor(widget.orderInfo.statusId),
-                    ),
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                        const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: Palette.getStatusColor(widget.orderInfo.statusId),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     child: Text(
                       widget.orderInfo.statusName,
                       style: const TextStyle(
-                        fontSize: 12,
                         color: Palette.white,
-                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
                   Text(
                     "Rp${widget.orderInfo.totalPrice}",
                     style: const TextStyle(
+                      color: Palette.black,
                       fontSize: 16,
-                      color: Palette.dark,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w600,
                     ),
-                  ),
+                  )
                 ],
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

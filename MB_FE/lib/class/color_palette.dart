@@ -23,6 +23,8 @@ class Palette {
 
   static const Color error = Color.fromARGB(255, 255, 84, 84);
 
+  static const Color warning = Color.fromARGB(255, 228, 152, 52);
+
   static const Color success = Color.fromARGB(255, 52, 228, 114);
 
   static const Color background = Color.fromARGB(255, 255, 255, 255);
@@ -30,19 +32,28 @@ class Palette {
   static getStatusColor(int statusTypeId) {
     switch (statusTypeId) {
       case 1: // Preparing Food
-        return const Color.fromARGB(255, 200, 50, 50);
+        return Palette.error;
       case 2: // DINE IN: Served All
-        return const Color.fromARGB(255, 52, 228, 114);
+        return Palette.success;
       case 3: // DELIVERY: Delivering / Delivered
-        return const Color.fromARGB(255, 52, 228, 114);
+        return Palette.success;
       case 4: // DELIVERY: Waiting to pick-up dish
-        return const Color.fromARGB(255, 225, 175, 50);
+        return Palette.warning;
       case 5: // PICK-UP: Waiting for dish pick up
-        return const Color.fromARGB(255, 52, 228, 114);
+        return Palette.success;
       case 6: // Finished / Paid
-        return const Color.fromARGB(255, 60, 160, 220);
+        return Palette.link;
       default:
         return dark;
     }
+  }
+
+  static Color darken(Color color, [double amount = .1]) {
+    assert(amount >= 0 && amount <= 1);
+
+    final hsl = HSLColor.fromColor(color);
+    final hslDark = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
+
+    return hslDark.toColor();
   }
 }
