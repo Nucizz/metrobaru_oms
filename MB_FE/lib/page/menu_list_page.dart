@@ -8,6 +8,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../class/color_palette.dart';
+import '../class/feature.dart';
 import '../class/item.dart';
 import '../class/user.dart';
 import '../cui/cui_back_button_title.dart';
@@ -47,9 +48,6 @@ class _MenuListPageState extends State<MenuListPage> {
     setState(() {
       cart = newList;
     });
-    for (OrderDetails i in newList) {
-      print("${i.item.name} === ${i.quantity}");
-    }
     updateCart();
   }
 
@@ -120,7 +118,7 @@ class _MenuListPageState extends State<MenuListPage> {
                 mainAxisSpacing: 20,
                 childAspectRatio: ((SizeConfig.widthByPercent(50) - 25) /
                     (SizeConfig.widthByPercent(50) + 20)),
-                children: Debug.itemList
+                children: Debug.itemListFoods
                     .map(
                       (e) => CUIItemGridView(
                         item: e,
@@ -149,7 +147,7 @@ class _MenuListPageState extends State<MenuListPage> {
                 mainAxisSpacing: 20,
                 childAspectRatio: ((SizeConfig.widthByPercent(50) - 25) /
                     (SizeConfig.widthByPercent(50) + 20)),
-                children: Debug.itemList
+                children: Debug.itemListBeverages
                     .map(
                       (e) => CUIItemGridView(
                         item: e,
@@ -187,6 +185,7 @@ class _MenuListPageState extends State<MenuListPage> {
                   duration: const Duration(milliseconds: 300),
                   child: CartPage(
                     user: widget.user,
+                    totalPrice: totalPrice,
                     orderList: cart,
                     listener: parseCartList,
                   ),
@@ -214,8 +213,8 @@ class _MenuListPageState extends State<MenuListPage> {
                     Color.fromARGB(255, 150, 25, 25),
                     Color.fromARGB(255, 50, 0, 0),
                   ],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
               child: Row(
@@ -223,7 +222,7 @@ class _MenuListPageState extends State<MenuListPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    " Rp$totalPrice",
+                    " ${Feature.getCurrency(totalPrice)}",
                     style: const TextStyle(
                       color: Palette.white,
                       fontSize: 18,

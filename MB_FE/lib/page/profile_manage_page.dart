@@ -1,23 +1,24 @@
 import 'package:fe_lec_finalproject/cui/cui_developer_information.dart';
-import 'package:fe_lec_finalproject/cui/cui_manage_list.dart';
+import 'package:fe_lec_finalproject/cui/cui_manage_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../../class/color_palette.dart';
-import '../../class/size_config.dart';
-import '../../class/user.dart';
+import '../class/color_palette.dart';
+import '../class/feature.dart';
+import '../class/size_config.dart';
+import '../class/user.dart';
 
-class ADMManagePage extends StatefulWidget {
-  const ADMManagePage({super.key, required this.user});
+class ProfileManagePage extends StatefulWidget {
+  const ProfileManagePage({super.key, required this.user});
   final User user;
 
   @override
-  State<ADMManagePage> createState() => _ADMManagePageState();
+  State<ProfileManagePage> createState() => _ProfileManagePageState();
 }
 
-class _ADMManagePageState extends State<ADMManagePage> {
+class _ProfileManagePageState extends State<ProfileManagePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -107,7 +108,7 @@ class _ADMManagePageState extends State<ADMManagePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.user.emailAddress,
+                          Feature.elipsisLimitBy(widget.user.emailAddress, 30),
                           style: const TextStyle(
                             color: Palette.white,
                             fontSize: 14,
@@ -165,7 +166,7 @@ class _ADMManagePageState extends State<ADMManagePage> {
                               ),
                             ),
                           ),
-                          CUIManageList(
+                          CUIManageListView(
                             function: () {},
                             icon: Icons.person,
                             title: "Edit Profile",
@@ -175,7 +176,7 @@ class _ADMManagePageState extends State<ADMManagePage> {
                           const Divider(
                             thickness: 1,
                           ),
-                          CUIManageList(
+                          CUIManageListView(
                             function: () {},
                             icon: Icons.lock_rounded,
                             title: "Security settings",
@@ -185,7 +186,7 @@ class _ADMManagePageState extends State<ADMManagePage> {
                           const Divider(
                             thickness: 1,
                           ),
-                          CUIManageList(
+                          CUIManageListView(
                             function: () {},
                             icon: Icons.logout_rounded,
                             title: "Logout",
@@ -195,84 +196,90 @@ class _ADMManagePageState extends State<ADMManagePage> {
                         ],
                       ),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 5),
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10),
-                      child: ListView(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 2),
-                            child: Text(
-                              "Restaurant",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Palette.black,
+                    Visibility(
+                      visible: widget.user.typeId == 2,
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 5),
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(10),
+                        child: ListView(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 2),
+                              child: Text(
+                                "Restaurant",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Palette.black,
+                                ),
                               ),
                             ),
-                          ),
-                          CUIManageList(
-                            function: () {},
-                            icon: Icons.store_rounded,
-                            title: "Edit restaurant",
-                            hint: "Change your resturant information",
-                            warning: false,
-                          ),
-                          const Divider(
-                            thickness: 1,
-                          ),
-                          CUIManageList(
-                            function: () {},
-                            icon: Icons.people_alt_rounded,
-                            title: "Manage users",
-                            hint: "Manage registered users on the app",
-                            warning: false,
-                          ),
-                          const Divider(
-                            thickness: 1,
-                          ),
-                          CUIManageList(
-                            function: () {},
-                            icon: Icons.miscellaneous_services_rounded,
-                            title: "Manage services",
-                            hint: "Manage in-app services for customers",
-                            warning: false,
-                          ),
-                        ],
+                            CUIManageListView(
+                              function: () {},
+                              icon: Icons.store_rounded,
+                              title: "Edit restaurant",
+                              hint: "Change your resturant information",
+                              warning: false,
+                            ),
+                            const Divider(
+                              thickness: 1,
+                            ),
+                            CUIManageListView(
+                              function: () {},
+                              icon: Icons.people_alt_rounded,
+                              title: "Manage users",
+                              hint: "Manage registered users on the app",
+                              warning: false,
+                            ),
+                            const Divider(
+                              thickness: 1,
+                            ),
+                            CUIManageListView(
+                              function: () {},
+                              icon: Icons.miscellaneous_services_rounded,
+                              title: "Manage services",
+                              hint: "Manage in-app services for customers",
+                              warning: false,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 5),
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(10),
-                      child: ListView(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(bottom: 2),
-                            child: Text(
-                              "Menu",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Palette.black,
+                    Visibility(
+                      visible: widget.user.typeId == 2,
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 5),
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(10),
+                        child: ListView(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 2),
+                              child: Text(
+                                "Menu",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Palette.black,
+                                ),
                               ),
                             ),
-                          ),
-                          CUIManageList(
-                            function: () {},
-                            icon: Icons.menu_book_rounded,
-                            title: "Manage items",
-                            hint: "Manage menu items information",
-                            warning: false,
-                          ),
-                        ],
+                            CUIManageListView(
+                              function: () {},
+                              icon: Icons.menu_book_rounded,
+                              title: "Manage items",
+                              hint: "Manage menu items information",
+                              warning: false,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Container(

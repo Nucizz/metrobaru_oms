@@ -171,7 +171,7 @@ class _RegisterPageState extends State<RegisterPage>
                             PageTransition(
                               type: PageTransitionType.rightToLeft,
                               duration: const Duration(milliseconds: 300),
-                              child: CUSMainPage(user: Debug.dummyUser[1]),
+                              child: CUSMainPage(user: Debug.admin),
                             ),
                           );
                         },

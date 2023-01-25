@@ -29,25 +29,6 @@ class Palette {
 
   static const Color background = Color.fromARGB(255, 255, 255, 255);
 
-  static getStatusColor(int statusTypeId) {
-    switch (statusTypeId) {
-      case 1: // Preparing Food
-        return Palette.error;
-      case 2: // DINE IN: Served All
-        return Palette.success;
-      case 3: // DELIVERY: Delivering / Delivered
-        return Palette.success;
-      case 4: // DELIVERY: Waiting to pick-up dish
-        return Palette.warning;
-      case 5: // PICK-UP: Waiting for dish pick up
-        return Palette.success;
-      case 6: // Finished / Paid
-        return Palette.link;
-      default:
-        return dark;
-    }
-  }
-
   static Color darken(Color color, [double amount = .1]) {
     assert(amount >= 0 && amount <= 1);
 

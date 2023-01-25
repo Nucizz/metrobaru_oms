@@ -2,9 +2,8 @@ import 'package:fe_lec_finalproject/class/color_palette.dart';
 import 'package:fe_lec_finalproject/class/size_config.dart';
 import 'package:fe_lec_finalproject/page/customer/customer_order_list_page.dart';
 import 'package:fe_lec_finalproject/page/home_page.dart';
-import 'package:fe_lec_finalproject/page/admin/admin_manage_page.dart';
+import 'package:fe_lec_finalproject/page/profile_manage_page.dart';
 import 'package:fe_lec_finalproject/page/admin/admin_order_list_page.dart';
-import 'package:fe_lec_finalproject/page/customer/customer_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -108,7 +107,7 @@ class _CUSMainPageState extends State<CUSMainPage> {
       body: [
         HomePage(user: widget.user),
         const CUSOrderListPage(),
-        CUSProfilePage(user: widget.user),
+        ProfileManagePage(user: widget.user),
       ].elementAt(_selectedIndex),
     );
   }

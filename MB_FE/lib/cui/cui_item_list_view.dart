@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../class/feature.dart';
+
 class CUIItemListView extends StatefulWidget {
   const CUIItemListView({super.key, required this.item});
   final Item item;
@@ -49,7 +51,7 @@ class _CUIItemListViewState extends State<CUIItemListView> {
                     ),
                   ),
                   Text(
-                    "Rp${widget.item.price}",
+                    Feature.getCurrency(widget.item.price),
                     style: const TextStyle(
                       fontSize: 14,
                       color: Palette.dark,

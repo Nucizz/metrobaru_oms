@@ -46,6 +46,7 @@ class _CUIQtyButtonState extends State<CUIQtyButton> {
                     item: widget.order!.item,
                     price: widget.order!.price,
                     quantity: qty,
+                    ready: widget.order!.ready,
                   ));
                   widget.price!(widget.order!.item.price * qty);
                 }
@@ -89,6 +90,7 @@ class _CUIQtyButtonState extends State<CUIQtyButton> {
                     item: widget.order!.item,
                     price: widget.order!.item.price * qty,
                     quantity: qty,
+                    ready: widget.order!.ready,
                   ));
                   widget.price!(widget.order!.item.price * qty);
                 }

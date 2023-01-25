@@ -1,9 +1,8 @@
 import 'package:fe_lec_finalproject/class/color_palette.dart';
 import 'package:fe_lec_finalproject/class/size_config.dart';
 import 'package:fe_lec_finalproject/page/home_page.dart';
-import 'package:fe_lec_finalproject/page/admin/admin_manage_page.dart';
+import 'package:fe_lec_finalproject/page/profile_manage_page.dart';
 import 'package:fe_lec_finalproject/page/admin/admin_order_list_page.dart';
-import 'package:fe_lec_finalproject/page/customer/customer_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -107,7 +106,7 @@ class _ADMMainPageState extends State<ADMMainPage> {
       body: [
         HomePage(user: widget.user),
         ADMOrderListPage(user: widget.user),
-        ADMManagePage(user: widget.user),
+        ProfileManagePage(user: widget.user),
       ].elementAt(_selectedIndex),
     );
   }

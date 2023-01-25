@@ -519,7 +519,7 @@ class _HomePageState extends State<HomePage> {
                                 shrinkWrap: true,
                                 padding: EdgeInsets.zero,
                                 physics: const NeverScrollableScrollPhysics(),
-                                children: Debug.itemList
+                                children: Debug.itemListFoods
                                     .map((e) => CUIItemListView(item: e))
                                     .toList()),
                           ),

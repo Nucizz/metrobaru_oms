@@ -90,7 +90,10 @@ class _ADMOrderListPageState extends State<ADMOrderListPage> {
                 shrinkWrap: true,
                 padding: const EdgeInsets.only(top: 15),
                 children: Debug.orderList
-                    .map((e) => CUIOrderListView(orderInfo: e))
+                    .map((e) => CUIOrderListView(
+                          orderInfo: e,
+                          user: widget.user,
+                        ))
                     .toList(),
               ),
               const SizedBox(

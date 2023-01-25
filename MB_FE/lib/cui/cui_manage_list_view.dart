@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class CUIManageList extends StatefulWidget {
-  const CUIManageList({
+class CUIManageListView extends StatefulWidget {
+  const CUIManageListView({
     super.key,
     required this.icon,
     required this.title,
@@ -20,10 +20,10 @@ class CUIManageList extends StatefulWidget {
   final bool warning;
 
   @override
-  State<CUIManageList> createState() => _CUIManageListState();
+  State<CUIManageListView> createState() => _CUIManageListViewState();
 }
 
-class _CUIManageListState extends State<CUIManageList> {
+class _CUIManageListViewState extends State<CUIManageListView> {
   @override
   Widget build(BuildContext context) {
     return TextButton(

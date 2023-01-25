@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import '../class/color_palette.dart';
+import '../class/feature.dart';
 import '../class/size_config.dart';
 import 'cui_qty_button.dart';
 
@@ -66,11 +67,19 @@ class _CUICartListViewState extends State<CUICartListView> {
                   ),
                 ),
                 Text(
-                  "Rp${widget.order.price}",
+                  "${Feature.getCurrency(widget.order.item.price)} (x${widget.order.quantity})",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Palette.dark.withOpacity(0.6),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  Feature.getCurrency(widget.order.price),
                   style: const TextStyle(
                     fontSize: 14,
                     color: Palette.dark,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 Row(

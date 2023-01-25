@@ -1,15 +1,21 @@
+import 'package:fe_lec_finalproject/class/feature.dart';
 import 'package:fe_lec_finalproject/class/order_header.dart';
+import 'package:fe_lec_finalproject/page/order_view_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../class/color_palette.dart';
 import '../class/size_config.dart';
+import '../class/user.dart';
 
 class CUIOrderListView extends StatefulWidget {
-  const CUIOrderListView({super.key, required this.orderInfo});
+  const CUIOrderListView(
+      {super.key, required this.orderInfo, required this.user});
   final OrderHeader orderInfo;
+  final User user;
 
   @override
   State<CUIOrderListView> createState() => _CUIOrderListViewState();
@@ -21,7 +27,19 @@ class _CUIOrderListViewState extends State<CUIOrderListView> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: const Duration(milliseconds: 300),
+              child: OrderViewPage(
+                user: widget.user,
+                order: widget.orderInfo,
+              ),
+            ),
+          );
+        },
         style: ButtonStyle(
           padding: const MaterialStatePropertyAll(EdgeInsets.all(0)),
           shape: MaterialStatePropertyAll(
@@ -54,7 +72,7 @@ class _CUIOrderListViewState extends State<CUIOrderListView> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  OrderHeader.duration(widget.orderInfo.lastUpdatedTS),
+                  Feature.duration(widget.orderInfo.lastUpdatedTS),
                 ],
               ),
               Row(
@@ -68,11 +86,14 @@ class _CUIOrderListViewState extends State<CUIOrderListView> {
                               ? Icons.delivery_dining_rounded
                               : Icons.inbox_rounded,
                       size: 16,
+                      color: Palette.black,
                     ),
                   ),
                   Text(
                     OrderHeader.isDineIn(widget.orderInfo.typeId)
-                        ? "Table ${widget.orderInfo.tableNumber}"
+                        ? (widget.orderInfo.name != null)
+                            ? "Table ${widget.orderInfo.tableNumber}: ${widget.orderInfo.name!}"
+                            : "Table ${widget.orderInfo.tableNumber}"
                         : widget.orderInfo.name!,
                     style: const TextStyle(
                       fontSize: 16,
@@ -86,24 +107,9 @@ class _CUIOrderListViewState extends State<CUIOrderListView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: Palette.getStatusColor(widget.orderInfo.statusId),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      widget.orderInfo.statusName,
-                      style: const TextStyle(
-                        color: Palette.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
+                  OrderHeader.statusBar(widget.orderInfo.statusId),
                   Text(
-                    "Rp${widget.orderInfo.totalPrice}",
+                    Feature.getCurrency(widget.orderInfo.totalPrice),
                     style: const TextStyle(
                       color: Palette.black,
                       fontSize: 16,
