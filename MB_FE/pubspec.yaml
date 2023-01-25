@@ -43,6 +43,7 @@ dependencies:
   url_launcher: ^6.1.8
   another_flushbar: ^1.12.29
   intl: ^0.18.0
+  flutter_launcher_icons: ^0.11.0
 
 
 dev_dependencies:
@@ -58,6 +59,11 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/images/UI/icon.png"
 
 # The following section is specific to Flutter packages.
 flutter:

@@ -10,7 +10,7 @@
     </queries>
 
    <application
-        android:label="fe_lec_finalproject"
+        android:label="RM. Metro Baru"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
